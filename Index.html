@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akidah Akhlak Kelas VII - Pertemuan 1: Hakikat Taubat (Kurikulum Berbasis Cinta)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans for UI & Amiri for Arabic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              DEFAULT: '#0D7A75',
+              dark: '#064E4B',
+              deeper: '#042F2E',
+              light: '#129690',
+              soft: '#E6F4F3'
+            },
+            amber: {
+              DEFAULT: '#F4A915',
+              dark: '#D68E04',
+              light: '#FFD166',
+              soft: '#FEF6E6'
+            },
+            canvas: '#F8FAFC',
+            ink: '#0F292A'
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            arabic: ['Amiri', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --apple-ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --apple-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --apple-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #051617;
+      color: #0F292A;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Pola Geometris & Tekstur Non-AI Slop */
+    .dot-grid-teal {
+      background-image: radial-gradient(#0D7A75 1.75px, transparent 1.75px);
+      background-size: 14px 14px;
+    }
+    .dot-grid-amber {
+      background-image: radial-gradient(#F4A915 1.75px, transparent 1.75px);
+      background-size: 14px 14px;
+    }
+    .dot-grid-white {
+      background-image: radial-gradient(rgba(255,255,255,0.28) 1.5px, transparent 1.5px);
+      background-size: 14px 14px;
+    }
+
+    .slide-surface {
+      background-color: #FFFFFF;
+      background-image: 
+        radial-gradient(at 96% 4%, rgba(244, 169, 21, 0.09) 0px, transparent 42%),
+        radial-gradient(at 4% 96%, rgba(13, 122, 117, 0.09) 0px, transparent 42%);
+    }
+
+    /* Apple Keynote Style Slide Transitions */
+    .slide-section {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.95) translateY(22px);
+      filter: blur(10px);
+      transition: 
+        opacity 0.7s var(--apple-ease),
+        transform 0.7s var(--apple-ease),
+        filter 0.7s var(--apple-ease);
+      will-change: transform, opacity, filter;
+    }
+
+    .slide-section.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+      filter: blur(0px);
+      z-index: 20;
+    }
+
+    .slide-section.prev {
+      opacity: 0;
+      transform: scale(1.04) translateX(-48px);
+      filter: blur(8px);
+    }
+
+    /* Staggered Reveal Elements inside Active Slide */
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(26px) scale(0.98);
+      transition: 
+        opacity 0.75s var(--apple-ease),
+        transform 0.75s var(--apple-ease);
+    }
+
+    .slide-section.active .stagger-item {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .slide-section.active .delay-1 { transition-delay: 0.07s; }
+    .slide-section.active .delay-2 { transition-delay: 0.14s; }
+    .slide-section.active .delay-3 { transition-delay: 0.21s; }
+    .slide-section.active .delay-4 { transition-delay: 0.28s; }
+    .slide-section.active .delay-5 { transition-delay: 0.35s; }
+    .slide-section.active .delay-6 { transition-delay: 0.42s; }
+
+    /* Interaktif Per-Kata Bahasa Arab */
+    .arabic-word {
+      font-family: 'Amiri', serif;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6px 12px;
+      margin: 4px 3px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.32s var(--apple-spring);
+      position: relative;
+      border: 1.5px solid rgba(13, 122, 117, 0.12);
+      background: #FFFFFF;
+      line-height: 1.75;
+    }
+
+    .arabic-word:hover {
+      background-color: #FEF6E6;
+      border-color: #F4A915;
+      color: #064E4B;
+      transform: translateY(-5px) scale(1.07);
+      box-shadow: 0 12px 24px -6px rgba(244, 169, 21, 0.32);
+      z-index: 10;
+    }
+
+    .arabic-word.explored {
+      background-color: #E6F4F3;
+      border-color: #0D7A75;
+    }
+
+    .arabic-word.explored::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background-color: #0D7A75;
+    }
+
+    /* Diamond Badge Geometris */
+    .diamond-badge {
+      width: 42px;
+      height: 42px;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      box-shadow: 0 8px 18px -4px rgba(13, 122, 117, 0.25);
+      transition: transform 0.4s var(--apple-spring);
+      flex-shrink: 0;
+    }
+    .diamond-badge:hover {
+      transform: rotate(45deg) scale(1.12);
+    }
+    .diamond-badge span {
+      transform: rotate(-45deg);
+      font-weight: 800;
+    }
+
+    /* Custom Scrollbar */
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(13, 122, 117, 0.05);
+      border-radius: 8px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(13, 122, 117, 0.28);
+      border-radius: 8px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: rgba(13, 122, 117, 0.5);
+    }
+
+    /* Apple Dynamic Island Dock */
+    .apple-dock {
+      background: rgba(9, 29, 30, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s var(--apple-ease);
+    }
+
+    /* Floating Pulse Animation */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .animate-float {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between select-none overflow-hidden">
+
+  <!-- TOP HEADER BAR (Guru & Identitas Modul Kurikulum Berbasis Cinta) -->
+  <header class="h-14 px-4 lg:px-8 flex items-center justify-between bg-[#061C1D]/90 border-b border-white/10 text-white z-30 shrink-0">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal to-teal-dark flex items-center justify-center border border-amber/40 shadow-inner">
+        <i data-lucide="heart-handshake" class="w-5 h-5 text-amber"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-amber/20 text-amber border border-amber/30">Pertemuan 1</span>
+          <h1 class="text-sm md:text-base font-bold tracking-tight text-white">Akidah Akhlak Kelas VII • Bab Taubat</h1>
+        </div>
+        <p class="text-[11px] text-teal-soft/70 hidden sm:block">Kurikulum Berbasis Cinta (KBC) • Pendekatan Kasih Sayang & Rahmat Allah SWT</p>
+      </div>
+    </div>
+
+    <!-- Indikator Progres Pembelajaran & Tombol Modul Info -->
+    <div class="flex items-center gap-3">
+      <button onclick="openModalInfoModul()" class="flex items-center gap-1.5 text-xs font-semibold bg-white/10 hover:bg-white/15 text-amber-light px-3 py-1.5 rounded-lg border border-white/10 transition active:scale-95">
+        <i data-lucide="file-check-2" class="w-4 h-4"></i>
+        <span class="hidden md:inline">Identitas Modul Ajar</span>
+      </button>
+      <div class="hidden sm:flex items-center gap-2 bg-black/30 px-3 py-1.5 rounded-lg border border-white/10">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="phaseBadge" class="text-xs font-semibold text-teal-soft">TAHAP: PEMBUKAAN</span>
+      </div>
+      <button onclick="toggleFullScreen()" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition" title="Layar Penuh (Fullscreen)">
+        <i data-lucide="maximize-2" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN PRESENTATION STAGE -->
+  <main class="relative flex-1 w-full h-full overflow-hidden flex items-center justify-center p-2 sm:p-4 lg:p-6">
+    <div id="slideStage" class="relative w-full h-full max-w-[1380px] max-h-[820px] rounded-3xl shadow-2xl overflow-hidden border border-white/15 slide-surface">
+
+      <!-- ==========================================
+           SLIDE 1: COVER PERTEMUAN 1 (KURIKULUM BERBASIS CINTA)
+           ========================================== -->
+      <section class="slide-section active p-6 sm:p-10 lg:p-14 flex flex-col justify-between" data-phase="PEMBUKAAN & COVER">
+        <!-- Ornamen Geometris Sudut -->
+        <div class="absolute top-0 right-0 w-72 h-72 bg-teal rounded-bl-[140px] -z-0 overflow-hidden shadow-xl">
+          <div class="w-full h-full dot-grid-white opacity-40"></div>
+        </div>
+        <div class="absolute bottom-8 right-12 w-32 h-20 dot-grid-amber opacity-80 hidden lg:block"></div>
+
+        <!-- Baris Atas Cover -->
+        <div class="relative z-10 flex flex-wrap items-center justify-between gap-4 stagger-item delay-1">
+          <div class="inline-flex items-center gap-2.5 bg-teal-soft border border-teal/20 px-4 py-2 rounded-full">
+            <span class="w-2.5 h-2.5 rounded-full bg-teal"></span>
+            <span class="text-xs sm:text-sm font-bold text-teal-dark tracking-wide uppercase">Modul Ajar Akidah Akhlak • Fase D Kelas VII</span>
+          </div>
+          <div class="bg-amber text-ink font-extrabold text-xs sm:text-sm px-4 py-2 rounded-full shadow-md flex items-center gap-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            KURIKULUM BERBASIS CINTA
+          </div>
+        </div>
+
+        <!-- Konten Utama Cover -->
+        <div class="relative z-10 my-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-5">
+            <div class="stagger-item delay-2">
+              <p class="text-amber-dark font-extrabold tracking-widest text-xs sm:text-sm uppercase mb-1">Pertemuan Ke-1 • Akhlak Terpuji Kepada Allah SWT</p>
+              <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-ink leading-[1.12] tracking-tight">
+                Indahnya <span class="text-teal underline decoration-amber decoration-4 underline-offset-8">Taubat</span>:<br/>
+                Pulang Menuju Pelukan Kasih Sayang Allah
+              </h2>
+            </div>
+
+            <p class="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl stagger-item delay-3">
+              Memahami hakikat taubat bukan dari rasa takut yang mencekam, melainkan sebagai <strong>panggilan cinta Allah Yang Maha Pengampun (Al-Ghaffar & At-Tawwab)</strong> agar hati kembali bersih, tenang, dan bermartabat.
+            </p>
+
+            <!-- Poin Fokus Pertemuan 1 -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 stagger-item delay-4">
+              <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center font-bold text-xs">01</div>
+                <span class="text-xs font-bold text-ink">Pengertian & Hakikat</span>
+              </div>
+              <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-amber/20 text-amber-dark flex items-center justify-center font-bold text-xs">02</div>
+                <span class="text-xs font-bold text-ink">Dalil Per-Kata Interaktif</span>
+              </div>
+              <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center font-bold text-xs">03</div>
+                <span class="text-xs font-bold text-ink">Syarat & Rukun Taubat</span>
+              </div>
+              <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-amber/20 text-amber-dark flex items-center justify-center font-bold text-xs">04</div>
+                <span class="text-xs font-bold text-ink">Studi Kasus & Kuis</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kartu Visual Kanan -->
+          <div class="lg:col-span-5 stagger-item delay-5">
+            <div class="bg-gradient-to-br from-teal-dark via-teal to-teal-light p-6 sm:p-8 rounded-3xl text-white shadow-2xl relative overflow-hidden border-2 border-amber/40">
+              <div class="absolute -right-8 -bottom-8 w-40 h-40 rounded-full bg-amber/20 blur-2xl"></div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs uppercase tracking-widest text-amber-light font-bold">Paradigma Kurikulum Cinta</span>
+                <i data-lucide="compass" class="w-6 h-6 text-amber"></i>
+              </div>
+              <p class="font-arabic text-2xl sm:text-3xl text-right leading-loose text-amber-light mb-3" dir="rtl">
+                إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ
+              </p>
+              <p class="text-xs sm:text-sm text-teal-soft italic leading-relaxed mb-5">
+                "Sesungguhnya Allah <strong>mencintai</strong> orang-orang yang bertaubat dan mencintai orang-orang yang mensucikan diri." (QS. Al-Baqarah: 222)
+              </p>
+              <div class="pt-4 border-t border-white/15 flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] text-teal-soft/80">Mulai Pembelajaran Interaktif</p>
+                  <p class="text-xs font-bold text-white">Gunakan Tombol Navigasi atau Panah Keyboard</p>
+                </div>
+                <button onclick="nextSlide()" class="px-4 py-2.5 rounded-xl bg-amber hover:bg-amber-light text-ink font-extrabold text-xs flex items-center gap-1.5 shadow-lg transition transform active:scale-95">
+                  <span>Mulai Kelas</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Slide 1 -->
+        <div class="relative z-10 flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-200/80 stagger-item delay-6">
+          <span>Alokasi Waktu: 2 JP (2 x 40 Menit) • Model: Deep Learning & Reflective Love</span>
+          <span class="font-semibold text-teal">Klik tiap kata Arab di slide Dalil untuk melihat analisis makna!</span>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 2: KEGIATAN PENDAHULUAN (DOA, PRESENSI HATI & APERSEPSI)
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="1. KEGIATAN PENDAHULUAN (10 MENIT)">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-4 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-teal text-white"><span>01</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-amber-dark">Tahap Pembukaan Pembelajaran</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Orientasi, Doa & Kesiapan Batin (Mindful Check-in)</h2>
+            </div>
+          </div>
+          <span class="text-xs font-bold bg-teal-soft text-teal-dark px-3 py-1.5 rounded-full">10 Menit Pertama</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto py-4">
+          <!-- Kolom Kiri: Langkah Pembukaan Guru & Siswa -->
+          <div class="lg:col-span-6 space-y-4 stagger-item delay-2">
+            <div class="bg-amber-soft/70 border border-amber/40 rounded-2xl p-5">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-amber-dark flex items-center gap-1.5">
+                  <i data-lucide="Sparkles" class="w-4 h-4"></i> Doa Pembuka Belajar (Klik Kata Arab)
+                </span>
+                <span class="text-[11px] text-slate-500">Interaktif Per-Kata</span>
+              </div>
+              <div class="flex flex-wrap justify-end gap-1 my-2" dir="rtl" id="doaWordsContainer"></div>
+              <p class="text-xs text-slate-600 italic mt-2">"Ya Tuhanku, tambahkanlah kepadaku ilmu pengetahuan, dan berikanlah aku karunia untuk dapat memahaminya."</p>
+            </div>
+
+            <!-- Checklist Pembukaan Guru di Kelas -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+              <h3 class="text-sm font-extrabold text-ink flex items-center gap-2">
+                <i data-lucide="list-checks" class="w-4 h-4 text-teal"></i>
+                Aktivitas Pembukaan Kelas (Klik untuk Centang)
+              </h3>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <label class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 hover:bg-teal-soft/50 cursor-pointer transition">
+                  <input type="checkbox" class="w-4 h-4 accent-teal rounded" onchange="updateReadinessProgress()">
+                  <span class="font-medium text-slate-700">1. Mengucap salam hangat dengan senyum & menyapa kabar siswa penuh kasih.</span>
+                </label>
+                <label class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 hover:bg-teal-soft/50 cursor-pointer transition">
+                  <input type="checkbox" class="w-4 h-4 accent-teal rounded" onchange="updateReadinessProgress()">
+                  <span class="font-medium text-slate-700">2. Mengecek kehadiran & mendoakan teman yang sedang sakit/berhalangan.</span>
+                </label>
+                <label class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 hover:bg-teal-soft/50 cursor-pointer transition">
+                  <input type="checkbox" class="w-4 h-4 accent-teal rounded" onchange="updateReadinessProgress()">
+                  <span class="font-medium text-slate-700">3. Melakukan <em>Ice Breaking</em> singkat: "Tarik Napas Syukur & Lepaskan Beban".</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Barometer Perasaan Siswa & Pertanyaan Pemantik -->
+          <div class="lg:col-span-6 space-y-4 stagger-item delay-3">
+            <!-- Interactive Mood Check-in -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+              <h3 class="text-sm font-extrabold text-ink mb-1">Presensi Hati Siswa Hari Ini</h3>
+              <p class="text-xs text-slate-500 mb-3">Guru bertanya kepada kelas: "Bagaimana kondisi hati kalian pagi ini sebelum belajar tentang Cinta & Ampunan Allah?"</p>
+              <div class="grid grid-cols-3 gap-2.5">
+                <button onclick="selectMood('Semangat & Bersyukur', 'Alhamdulillah! Mari salurkan energi positif ini untuk memahami betapa luasnya rahmat Allah SWT.')" class="p-3 rounded-xl border border-slate-200 hover:border-teal hover:bg-teal-soft/40 flex flex-col items-center gap-1 transition group">
+                  <span class="text-2xl group-hover:scale-110 transition">😊</span>
+                  <span class="text-xs font-bold text-ink">Semangat</span>
+                </button>
+                <button onclick="selectMood('Sedang Lelah / Banyak Pikiran', 'Tidak apa-apa. Materi Taubat hari ini justru akan menjadi penyejuk dan tempat istirahat terbaik bagi hati yang lelah.')" class="p-3 rounded-xl border border-slate-200 hover:border-amber hover:bg-amber-soft/50 flex flex-col items-center gap-1 transition group">
+                  <span class="text-2xl group-hover:scale-110 transition">😌</span>
+                  <span class="text-xs font-bold text-ink">Perlu Tenang</span>
+                </button>
+                <button onclick="selectMood('Ingin Memperbaiki Diri', 'Niat yang sangat mulia! Satu langkah keinginanmu untuk menjadi lebih baik sudah dicatat sebagai kebaikan oleh Allah.')" class="p-3 rounded-xl border border-slate-200 hover:border-teal hover:bg-teal-soft/40 flex flex-col items-center gap-1 transition group">
+                  <span class="text-2xl group-hover:scale-110 transition">🤲</span>
+                  <span class="text-xs font-bold text-ink">Siap Hijrah</span>
+                </button>
+              </div>
+              <div id="moodResponseBox" class="mt-3 p-3 rounded-xl bg-teal text-white text-xs font-medium hidden"></div>
+            </div>
+
+            <!-- Apersepsi & Pemantik Kurikulum Cinta -->
+            <div class="bg-gradient-to-r from-teal-dark to-teal rounded-2xl p-5 text-white shadow-lg">
+              <div class="flex items-center gap-2 text-amber-light text-xs font-bold uppercase tracking-wider mb-2">
+                <i data-lucide="help-circle" class="w-4 h-4"></i> Pertanyaan Pemantik Apersepsi
+              </div>
+              <p class="text-sm sm:text-base font-bold leading-snug mb-2">
+                "Pernahkah pakaian kesayangan kalian terkena noda lumpur? Apakah pakaian itu langsung kalian buang ke tempat sampah, atau kalian cuci dengan sabun hingga bersih kembali?"
+              </p>
+              <p class="text-xs text-teal-soft/90 leading-relaxed">
+                <strong>Filosofi Cinta:</strong> Begitu pula hati manusia. Saat melakukan kesalahan, Allah tidak membuang kita. Allah menyediakan "air pembersih jiwa" bernama <strong>TAUBAT</strong> karena Allah sangat menyayangi kita.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 flex justify-between items-center pt-2 border-t border-slate-100 stagger-item delay-4">
+          <span>Modul Ajar Pertemuan 1 • Tahap Apersepsi</span>
+          <span class="text-teal font-semibold">Lanjut ke Slide 3 untuk Tujuan Pembelajaran & Peta Konsep →</span>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 3: TUJUAN PEMBELAJARAN, KKTP & NILAI KURIKULUM CINTA
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="1. KOMPONEN INTI MODUL AJAR">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-4 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-amber text-ink"><span>02</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-teal">Komponen Inti Modul Ajar</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Capaian, Tujuan Pembelajaran (TP) & Panca Cinta</h2>
+            </div>
+          </div>
+          <span class="text-xs font-bold bg-amber-soft text-amber-dark px-3 py-1.5 rounded-full border border-amber/30">Target Pertemuan 1</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 my-auto py-4">
+          <!-- Card 1: Tujuan Kognitif -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-teal/15 shadow-sm hover:shadow-md transition stagger-item delay-2 flex flex-col justify-between">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-teal-soft text-teal flex items-center justify-center mb-4">
+                <i data-lucide="book-open-check" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-teal">TP 1 • Pemahaman Konsep & Dalil</span>
+              <h3 class="text-base font-extrabold text-ink mt-1 mb-2">Menjelaskan Hakikat & Dalil Taubat</h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Peserta didik mampu menguraikan pengertian taubat secara bahasa dan istilah, serta menganalisis kandungan dalil <strong>QS. At-Tahrim: 8</strong> dan <strong>QS. An-Nur: 31</strong> beserta arti per-katanya secara tepat.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-teal flex items-center gap-1">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Indikator KKTP: Mampu mengartikan mufradat kunci ayat.
+            </div>
+          </div>
+
+          <!-- Card 2: Tujuan Analisis -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-amber/30 shadow-sm hover:shadow-md transition stagger-item delay-3 flex flex-col justify-between">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-amber-soft text-amber-dark flex items-center justify-center mb-4">
+                <i data-lucide="layers" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-dark">TP 2 • Klasifikasi Syarat</span>
+              <h3 class="text-base font-extrabold text-ink mt-1 mb-2">Merinci Syarat Taubat (Haqqullah & Haqqul Adam)</h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Peserta didik mampu membedakan tata cara dan syarat diterimanya taubat atas dosa kepada Allah SWT (3 syarat) dan dosa yang berkaitan dengan hak sesama manusia (4 syarat).
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-amber-dark flex items-center gap-1">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Indikator KKTP: Menyelesaikan studi kasus syarat taubat.
+            </div>
+          </div>
+
+          <!-- Card 3: Tujuan Sikap Kurikulum Cinta -->
+          <div class="bg-gradient-to-br from-teal-dark to-teal rounded-2xl p-5 text-white shadow-lg stagger-item delay-4 flex flex-col justify-between">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-white/15 text-amber-light flex items-center justify-center mb-4">
+                <i data-lucide="heart" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-light">TP 3 • Dimensi Kurikulum Berbasis Cinta</span>
+              <h3 class="text-base font-extrabold text-white mt-1 mb-2">Menumbuhkan Optimisme & Kasih Sayang</h3>
+              <p class="text-xs sm:text-sm text-teal-soft leading-relaxed">
+                Menghindari sikap putus asa dari rahmat Allah (<em>la taqnathu min rahmatillah</em>), membiasakan istighfar setiap hari, serta berani meminta maaf dan memaafkan sesama teman dengan tulus.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/15 text-[11px] font-bold text-amber-light flex items-center gap-1">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Nilai Cinta: Cinta Allah (Hubbullah) & Cinta Sesama.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex flex-wrap items-center justify-between gap-4 stagger-item delay-5">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-lg bg-teal text-white text-xs font-bold">Profil Pelajar Pancasila & Rahmatan Lil Alamin</span>
+            <span class="text-xs text-slate-600 font-medium">Beriman & Bertakwa • Berkeadaban (Ta'addub) • Keteladanan (Qudwah) • Toleransi & Pemaaf (Tasamuh)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 4: MATERI INTI 1 - HAKIKAT & PENGERTIAN TAUBAT
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="2. KEGIATAN INTI: EKSPLORASI KONSEP">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-4 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-teal text-white"><span>03</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-amber-dark">Materi Inti Bagian 1</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Pengertian & Hakikat Taubat (Bahasa, Istilah & Para Ulama)</h2>
+            </div>
+          </div>
+          <span class="text-xs font-semibold text-slate-500">Klik tab di bawah untuk mengeksplorasi dimensi makna</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto py-3 items-center">
+          <!-- Kiri: Derivasi Bahasa Arab Interaktif -->
+          <div class="lg:col-span-5 bg-teal-dark text-white rounded-3xl p-6 shadow-xl relative overflow-hidden stagger-item delay-2">
+            <div class="absolute top-0 right-0 w-28 h-28 dot-grid-amber opacity-30"></div>
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-light">Akar Kata Bahasa Arab (Klik Kata)</span>
+            <h3 class="text-lg font-extrabold mt-1 mb-4">Asal Kata "At-Taubah"</h3>
+
+            <div class="bg-white/10 rounded-2xl p-4 mb-4 text-center border border-white/15">
+              <div class="flex justify-center items-center gap-2 flex-wrap" dir="rtl" id="rootWordsContainer"></div>
+              <p class="text-xs text-teal-soft mt-2">Tāba – Yatūbu – Taubatan (تَابَ - يَتُوبُ - تَوْبَةً)</p>
+            </div>
+
+            <div class="space-y-2.5 text-xs sm:text-sm">
+              <div class="flex items-start gap-2.5 bg-black/20 p-3 rounded-xl">
+                <i data-lucide="corner-up-left" class="w-4 h-4 text-amber shrink-0 mt-0.5"></i>
+                <p><strong>Secara Bahasa (Etimologi):</strong> Berarti <em>Ar-Ruju'</em> (الرجوع) yaitu <strong>kembali</strong> atau pulang ke jalan yang benar setelah sempat menjauh.</p>
+              </div>
+              <div class="flex items-start gap-2.5 bg-black/20 p-3 rounded-xl">
+                <i data-lucide="shield-check" class="w-4 h-4 text-amber shrink-0 mt-0.5"></i>
+                <p><strong>Secara Istilah (Terminologi):</strong> Kembali kepada ketaatan kepada Allah SWT dengan meninggalkan segala perbuatan dosa, menyesalinya dengan sungguh-sungguh, dan bertekad bulat tidak mengulanginya lagi.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kanan: Pendapat Ulama & Perspektif Cinta -->
+          <div class="lg:col-span-7 space-y-4 stagger-item delay-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-teal transition">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-teal-soft text-teal font-extrabold text-xs flex items-center justify-center">01</span>
+                  <h4 class="font-extrabold text-sm text-ink">Imam Al-Ghazali</h4>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  "Taubat terdiri dari 3 kesatuan: <strong>Ilmu</strong> (menyadari bahwa dosa adalah racun bagi hati), <strong>Hal</strong> (timbulnya rasa sedih/menyesal karena menjauh dari Kekasih yaitu Allah), dan <strong>Amal</strong> (meninggalkan dosa & menggantinya dengan kebaikan)."
+                </p>
+              </div>
+
+              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-amber transition">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-amber-soft text-amber-dark font-extrabold text-xs flex items-center justify-center">02</span>
+                  <h4 class="font-extrabold text-sm text-ink">Hukum Bertaubat: Wajib 'Ain</h4>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Para ulama sepakat bahwa hukum bertaubat dari setiap dosa adalah <strong>Fardhu 'Ain (Wajib bagi setiap muslim)</strong> dengan segera (<em>al-faur</em>) tanpa menunda-nunda hingga hari esok.
+                </p>
+              </div>
+            </div>
+
+            <!-- Box Kurikulum Berbasis Cinta -->
+            <div class="bg-amber-soft border-2 border-amber rounded-2xl p-5 relative">
+              <div class="flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-amber text-ink flex items-center justify-center shrink-0 font-bold">
+                  <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-extrabold text-ink">Mengapa Taubat Adalah Bukti Cinta? (Refleksi KBC)</h4>
+                  <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mt-1">
+                    Dalam Hadis Riwayat Muslim, Rasulullah SAW mengisahkan bahwa <strong>Allah lebih gembira menerima taubat hamba-Nya</strong> melebihi kegembiraan seorang musafir di padang pasir tandus yang menemukan kembali unta beserta seluruh perbekalannya yang sempat hilang. Taubat bukanlah beban, melainkan <strong>sambutan hangat dari Allah SWT</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 flex justify-between items-center pt-2 border-t border-slate-100 stagger-item delay-4">
+          <span>Materi Pertemuan 1 • Hakikat Taubat</span>
+          <span class="text-teal font-semibold">Slide berikutnya: Tadabbur Interaktif Per-Kata QS. At-Tahrim Ayat 8 →</span>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 5: DALIL UTAMA 1 - QS. AT-TAHRIM AYAT 8 (KLIK PER-KATA ARAB)
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="2. KEGIATAN INTI: TADABBUR AYAT PER-KATA">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-amber text-ink"><span>04</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-teal">Tadabbur Al-Qur'an Interaktif 1</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Dalil Taubatan Nasuha: QS. At-Tahrim [66] Ayat 8</h2>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span id="tahrimCounter" class="text-xs font-bold bg-teal-soft text-teal-dark px-3 py-1.5 rounded-full">0 / 12 Kata Dieksplorasi</span>
+          </div>
+        </div>
+
+        <div class="my-auto py-3 space-y-4">
+          <!-- Petunjuk Interaksi -->
+          <div class="bg-amber-soft border border-amber/40 px-4 py-2.5 rounded-xl flex items-center justify-between stagger-item delay-2">
+            <div class="flex items-center gap-2 text-xs font-bold text-ink">
+              <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-amber-dark animate-bounce"></i>
+              <span>KLIK SETIAP KATA ARAB DI BAWAH INI untuk memunculkan Pop-up Arti, Transliterasi, dan Penjelasan Tadabburnya!</span>
+            </div>
+            <button onclick="showFullTafsirTahrim()" class="text-xs font-extrabold text-teal hover:underline shrink-0">Lihat Intisari Ayat</button>
+          </div>
+
+          <!-- Box Ayat Arab Per-Kata -->
+          <div class="bg-white border-2 border-teal/20 rounded-3xl p-5 sm:p-7 shadow-inner stagger-item delay-3">
+            <div id="ayahTahrimContainer" class="flex flex-wrap justify-center items-center gap-1.5 sm:gap-2.5 text-center" dir="rtl">
+              <!-- Diisi via JavaScript dari data terstruktur -->
+            </div>
+          </div>
+
+          <!-- Terjemahan Utuh & Makna Taubatan Nasuha -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 stagger-item delay-4">
+            <div class="lg:col-span-7 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-teal">Terjemahan Lengkap (Kemenag RI):</span>
+              <p class="text-xs sm:text-sm text-slate-700 italic leading-relaxed mt-1">
+                "Wahai orang-orang yang beriman! Bertaubatlah kepada Allah dengan <strong>taubat yang semurni-murninya (Taubatan Nasuha)</strong>, mudah-mudahan Tuhan kamu akan menghapus kesalahan-kesalahanmu dan memasukkan kamu ke dalam surga yang mengalir di bawahnya sungai-sungai..." (QS. At-Tahrim: 8)
+              </p>
+            </div>
+            <div class="lg:col-span-5 bg-teal text-white p-4 rounded-2xl flex flex-col justify-center">
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-light">Apa itu "Taubatan Nasuha"?</span>
+              <p class="text-xs leading-relaxed mt-1">
+                Berasal dari kata <em>Nashaha</em> (murni seperti madu asli tanpa campuran lilin, atau menjahit pakaian yang robek hingga rapat kembali). Artinya: <strong>Taubat yang tulus, jujur dari lubuk hati, dan memperbaiki robekan iman</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 flex justify-between items-center pt-2 border-t border-slate-100 stagger-item delay-5">
+          <span>Tips Guru: Minta siswa maju bergantian mengklik 1 kata Arab dan membacakan penjelasannya.</span>
+          <span class="text-teal font-semibold">Slide berikutnya: Dalil Kedua (QS. An-Nur: 31 & Az-Zumar: 53) →</span>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 6: DALIL UTAMA 2 - QS. AN-NUR: 31 & QS. AZ-ZUMAR: 53 (KLIK PER-KATA)
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="2. KEGIATAN INTI: DALIL HARAPAN & RAHMAT">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-teal text-white"><span>05</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-amber-dark">Tadabbur Al-Qur'an Interaktif 2</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Perintah Taubat Bersama & Larangan Berputus Asa</h2>
+            </div>
+          </div>
+          <span class="text-xs font-bold bg-amber-soft text-amber-dark px-3 py-1.5 rounded-full">Klik Setiap Kata Arab!</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-auto py-3">
+          <!-- Dalil A: QS. An-Nur Ayat 31 -->
+          <div class="bg-white rounded-3xl p-5 border-2 border-teal/20 shadow-sm flex flex-col justify-between stagger-item delay-2">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-3 py-1 rounded-full bg-teal text-white text-xs font-bold">QS. An-Nur [24]: 31</span>
+                <span class="text-[11px] font-bold text-slate-500">Kewajiban Bertaubat menuju Keberuntungan</span>
+              </div>
+              <div id="ayahNurContainer" class="flex flex-wrap justify-center items-center gap-1.5 py-4 bg-slate-50 rounded-2xl px-3 border border-slate-200/80" dir="rtl">
+                <!-- Diisi via JS -->
+              </div>
+              <p class="text-xs sm:text-sm text-slate-700 italic mt-3 leading-relaxed">
+                "Dan bertaubatlah kamu sekalian kepada Allah, wahai orang-orang yang beriman, supaya kamu beruntung."
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-teal-dark bg-teal-soft/60 p-3 rounded-xl">
+              <strong>Pesan Cinta:</strong> Tujuan akhir dari perintah taubat bukanlah untuk mempermalukan manusia, melainkan <em>"La'allakum Tuflihun"</em> (Agar kalian bahagia dan beruntung dunia-akhirat).
+            </div>
+          </div>
+
+          <!-- Dalil B: QS. Az-Zumar Ayat 53 -->
+          <div class="bg-white rounded-3xl p-5 border-2 border-amber/40 shadow-sm flex flex-col justify-between stagger-item delay-3">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-3 py-1 rounded-full bg-amber text-ink text-xs font-bold">QS. Az-Zumar [39]: 53</span>
+                <span class="text-[11px] font-bold text-slate-500">Ayat Paling Penuh Harapan di Al-Qur'an</span>
+              </div>
+              <div id="ayahZumarContainer" class="flex flex-wrap justify-center items-center gap-1.5 py-4 bg-amber-soft/40 rounded-2xl px-3 border border-amber/30" dir="rtl">
+                <!-- Diisi via JS -->
+              </div>
+              <p class="text-xs sm:text-sm text-slate-700 italic mt-3 leading-relaxed">
+                "Wahai hamba-hamba-Ku yang melampaui batas terhadap diri mereka sendiri! Janganlah kamu berputus asa dari rahmat Allah. Sesungguhnya Allah mengampuni dosa-dosa semuanya..."
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-ink bg-amber-soft p-3 rounded-xl">
+              <strong>Keindahan Sapaan Allah:</strong> Meski manusia berdosa melampaui batas, Allah tetap memanggil dengan penuh cinta: <em>"Yā 'Ibādi"</em> (Wahai hamba-hamba-Ku sayang).
+            </div>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 flex justify-between items-center pt-2 border-t border-slate-100 stagger-item delay-4">
+          <span>Klik kata Arab mana saja di kedua kartu di atas untuk melihat rincian tata bahasa & maknanya.</span>
+          <span class="text-teal font-semibold">Slide berikutnya: Rukun & Syarat Diterimanya Taubat →</span>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 7: SYARAT & RUKUN TAUBAT (HAQQULLAH VS HAQQUL ADAMI)
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="2. KEGIATAN INTI: SYARAT SAH TAUBAT">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-amber text-ink"><span>06</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-teal">Materi Inti Bagian 2 (Imam An-Nawawi)</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Syarat Diterimanya Taubat: Haqqullah & Haqqul Adami</h2>
+            </div>
+          </div>
+
+          <!-- Toggle Kategori Dosa -->
+          <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200">
+            <button id="btnTabHaqqullah" onclick="switchSyaratTab('haqqullah')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-teal text-white shadow transition">
+              1. Dosa Kepada Allah (3 Syarat)
+            </button>
+            <button id="btnTabAdami" onclick="switchSyaratTab('adami')" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold text-slate-600 hover:text-ink transition">
+              2. Dosa Kepada Sesama Manusia (+1 Syarat)
+            </button>
+          </div>
+        </div>
+
+        <div class="my-auto py-3">
+          <!-- Empat Kartu Pilar Syarat Taubat -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 stagger-item delay-2">
+            <!-- Syarat 1 -->
+            <div class="bg-white rounded-2xl p-5 border-2 border-teal/20 shadow-sm relative overflow-hidden group hover:border-teal transition">
+              <div class="w-10 h-10 rounded-xl bg-teal text-white font-extrabold flex items-center justify-center mb-3">01</div>
+              <span class="text-[11px] font-bold text-teal uppercase tracking-wider">Al-Iqla' (الإقلاع)</span>
+              <h3 class="text-base font-extrabold text-ink mt-0.5 mb-2">Berhenti Seketika dari Dosa</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Langsung menghentikan dan meninggalkan perbuatan maksiat/dosa yang sedang dilakukan saat itu juga karena kesadaran cinta kepada Allah.
+              </p>
+            </div>
+
+            <!-- Syarat 2 -->
+            <div class="bg-white rounded-2xl p-5 border-2 border-teal/20 shadow-sm relative overflow-hidden group hover:border-teal transition">
+              <div class="w-10 h-10 rounded-xl bg-teal text-white font-extrabold flex items-center justify-center mb-3">02</div>
+              <span class="text-[11px] font-bold text-teal uppercase tracking-wider">An-Nadm (الندم)</span>
+              <h3 class="text-base font-extrabold text-ink mt-0.5 mb-2">Menyesal dengan Tulus</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Hati merasa sedih dan menyesal yang mendalam karena telah melanggar perintah Allah. Nabi SAW bersabda: <em>"An-Nadamu Taubah"</em> (Penyesalan adalah inti taubat).
+              </p>
+            </div>
+
+            <!-- Syarat 3 -->
+            <div class="bg-white rounded-2xl p-5 border-2 border-teal/20 shadow-sm relative overflow-hidden group hover:border-teal transition">
+              <div class="w-10 h-10 rounded-xl bg-teal text-white font-extrabold flex items-center justify-center mb-3">03</div>
+              <span class="text-[11px] font-bold text-teal uppercase tracking-wider">Al-'Azm (العزم)</span>
+              <h3 class="text-base font-extrabold text-ink mt-0.5 mb-2">Tekad Kuat Tidak Mengulangi</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Berjanji dengan tekad bulat di dalam hati untuk tidak kembali melakukan dosa tersebut di masa yang akan datang serta memperbanyak amal saleh.
+              </p>
+            </div>
+
+            <!-- Syarat 4 (Khusus Haqqul Adami) -->
+            <div id="cardSyarat4" class="bg-amber-soft/60 rounded-2xl p-5 border-2 border-amber border-dashed shadow-sm relative overflow-hidden transition-all duration-500">
+              <div class="flex items-center justify-between mb-3">
+                <div class="w-10 h-10 rounded-xl bg-amber text-ink font-extrabold flex items-center justify-center">04</div>
+                <span class="px-2.5 py-0.5 rounded-full bg-amber text-ink text-[10px] font-extrabold uppercase">Khusus Sesama Manusia</span>
+              </div>
+              <span class="text-[11px] font-bold text-amber-dark uppercase tracking-wider">Bara'atul Dzimmah</span>
+              <h3 class="text-base font-extrabold text-ink mt-0.5 mb-2">Menyelesaikan Hak Sesama</h3>
+              <p class="text-xs text-slate-700 leading-relaxed">
+                Jika mengambil barang/harta wajib <strong>dikembalikan</strong>; jika menyakiti fisik, membully, atau menggunjing wajib <strong>meminta maaf & keridaan</strong> orang tersebut.
+              </p>
+            </div>
+          </div>
+
+          <!-- Penjelasan Dinamis Bawah -->
+          <div id="syaratDetailBanner" class="mt-4 bg-teal-dark text-white p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 stagger-item delay-3">
+            <div class="flex items-center gap-3">
+              <i data-lucide="info" class="w-6 h-6 text-amber shrink-0"></i>
+              <p id="syaratDetailText" class="text-xs sm:text-sm leading-relaxed">
+                <strong>Fokus Haqqullah (Dosa kepada Allah):</strong> Seperti lalai salat, kurang bersyukur, atau melanggar larangan pribadi. Cukup penuhi 3 syarat utama (Al-Iqla', An-Nadm, Al-'Azm) dan mengqadha kewajiban yang tertinggal.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 flex justify-between items-center pt-2 border-t border-slate-100 stagger-item delay-4">
+          <span>Kitab Referensi: Riyadush Shalihin Bab Taubat - Imam An-Nawawi</span>
+          <span class="text-teal font-semibold">Slide berikutnya: Simulasi Studi Kasus (LKPD Interaktif Kelas) →</span>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 8: AKTIVITAS DISKUSI & STUDI KASUS (LKPD INTERAKTIF)
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="2. KEGIATAN INTI: DISKUSI & LKPD">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-teal text-white"><span>07</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-amber-dark">Kegiatan Inti • Problem Based Learning (LKPD)</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Laboratorium Kasus: Bagaimana Cara Taubat yang Benar?</h2>
+            </div>
+          </div>
+          <span class="text-xs font-bold bg-teal-soft text-teal-dark px-3 py-1.5 rounded-full">Pilih Kasus untuk Dibahas Bersama Kelas</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto py-3">
+          <!-- Daftar Pilihan Kasus -->
+          <div class="lg:col-span-5 space-y-3 stagger-item delay-2">
+            <button onclick="selectCaseStudy(0)" id="caseBtn0" class="w-full text-left p-4 rounded-2xl border-2 border-teal bg-teal-soft/50 transition flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-teal text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">K1</div>
+              <div>
+                <h4 class="text-sm font-extrabold text-ink">Kasus 1: Komentar Mengejek di Grup WA Kelas</h4>
+                <p class="text-xs text-slate-600 mt-0.5">Raka ikut menertawakan foto temannya (Dimas) di grup WhatsApp hingga Dimas sedih dan malu.</p>
+              </div>
+            </button>
+
+            <button onclick="selectCaseStudy(1)" id="caseBtn1" class="w-full text-left p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-teal/50 transition flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-slate-200 text-ink font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">K2</div>
+              <div>
+                <h4 class="text-sm font-extrabold text-ink">Kasus 2: Menunda Salat Ashar Karena Game Online</h4>
+                <p class="text-xs text-slate-600 mt-0.5">Nabila terlalu asyik bermain game hingga waktu Ashar hampir habis dan baru salat terburu-buru.</p>
+              </div>
+            </button>
+
+            <button onclick="selectCaseStudy(2)" id="caseBtn2" class="w-full text-left p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-teal/50 transition flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-slate-200 text-ink font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">K3</div>
+              <div>
+                <h4 class="text-sm font-extrabold text-ink">Kasus 3: Memakai Uang Kembalian Kantin Sekolah</h4>
+                <p class="text-xs text-slate-600 mt-0.5">Fajar menyadari penjaga kantin kelebihan memberi uang kembalian Rp10.000 namun ia diam saja.</p>
+              </div>
+            </button>
+          </div>
+
+          <!-- Panel Analisis & Solusi Kasus -->
+          <div class="lg:col-span-7 bg-white rounded-3xl border-2 border-slate-200 p-6 shadow-sm flex flex-col justify-between stagger-item delay-3">
+            <div>
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                <span id="caseCategoryBadge" class="px-3 py-1 rounded-full bg-amber text-ink text-xs font-extrabold">Kategori: Haqqullah & Haqqul Adami</span>
+                <span class="text-xs text-slate-400 font-semibold">Diskusi Kelompok (5 Menit)</span>
+              </div>
+              <h3 id="caseTitle" class="text-lg font-extrabold text-ink mb-2">Kasus 1: Komentar Mengejek di Grup WA Kelas</h3>
+              <p id="caseScenario" class="text-xs sm:text-sm text-slate-600 leading-relaxed bg-slate-50 p-3.5 rounded-xl border border-slate-200 mb-4">
+                Raka sudah membaca kalimat "Astaghfirullah" di kamarnya malam hari karena merasa bersalah telah mengejek Dimas di grup WA. Menurut kalian, apakah taubat Raka sudah sah dan selesai?
+              </p>
+
+              <!-- Tombol Buka Jawaban Analisis -->
+              <button onclick="toggleCaseSolution()" class="px-4 py-2 rounded-xl bg-teal hover:bg-teal-dark text-white text-xs font-extrabold flex items-center gap-2 transition shadow">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span>Tampilkan Bedah Solusi Taubat (Kurikulum Cinta)</span>
+              </button>
+
+              <div id="caseSolutionBox" class="mt-4 p-4 rounded-2xl bg-teal-soft/70 border border-teal/30 space-y-2 hidden">
+                <p id="caseSolutionText" class="text-xs sm:text-sm text-ink leading-relaxed font-medium"></p>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500 flex items-center justify-between">
+              <span>Pertanyaan Guru: "Langkah nyata apa yang harus dilakukan tokoh di atas besok pagi?"</span>
+              <span class="font-bold text-teal">Klik tombol hijau untuk melihat kunci analisis</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 flex justify-between items-center pt-2 border-t border-slate-100 stagger-item delay-4">
+          <span>LKPD Pertemuan 1 • Penalaran Kritis & Empati Sosial</span>
+          <span class="text-teal font-semibold">Slide berikutnya: Hikmah & Keutamaan Orang yang Bertaubat →</span>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 9: HIKMAH & DAMPAK POSITIF TAUBAT + DZIKIR ISTIGHFAR
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="2. KEGIATAN INTI: HIKMAH & PEMBIASAAN">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-amber text-ink"><span>08</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-teal">Materi Inti Bagian 3</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Hikmah Taubat & Praktik Lafadz Sayyidul Istighfar</h2>
+            </div>
+          </div>
+          <span class="text-xs font-bold bg-amber-soft text-amber-dark px-3 py-1.5 rounded-full">Buah Manis Taubat</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto py-3 items-center">
+          <!-- 4 Hikmah Utama -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5 stagger-item delay-2">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl bg-teal-soft text-teal flex items-center justify-center shrink-0">
+                <i data-lucide="heart" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-extrabold text-ink">1. Dicintai oleh Allah SWT</h4>
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">Mendapatkan gelar mulia sebagai kekasih Allah (<em>Innallaha yuhibbut tawwabin</em>).</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl bg-amber-soft text-amber-dark flex items-center justify-center shrink-0">
+                <i data-lucide="smile-plus" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-extrabold text-ink">2. Hati Menjadi Tenang & Damai</h4>
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">Hilangnya rasa gelisah, takut, dan beban batin akibat menumpuknya kesalahan.</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl bg-teal-soft text-teal flex items-center justify-center shrink-0">
+                <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-extrabold text-ink">3. Keburukan Diubah Jadi Pahala</h4>
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">Sesuai QS. Al-Furqan: 70, bagi yang bertaubat dan beramal saleh, Allah mengganti catatan buruknya menjadi kebaikan.</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl bg-amber-soft text-amber-dark flex items-center justify-center shrink-0">
+                <i data-lucide="users" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-extrabold text-ink">4. Memulihkan Harmoni Persaudaraan</h4>
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">Keberanian meminta maaf menghapus permusuhan dan mempererat ukhuwah di sekolah & rumah.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Counter Istighfar Bersama Kelas (Per-Kata Arab Interaktif) -->
+          <div class="lg:col-span-5 bg-gradient-to-br from-teal-dark to-teal rounded-3xl p-6 text-white shadow-xl stagger-item delay-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-amber-light">Praktik Muhasabah Kelas (Klik Kata)</span>
+              <span id="tasbihCountBadge" class="px-2.5 py-0.5 rounded-full bg-white/15 text-xs font-bold">0x Dibaca</span>
+            </div>
+            <div class="bg-white/95 text-ink rounded-2xl p-3 my-3 flex flex-wrap justify-center gap-1" dir="rtl" id="istighfarWordsContainer"></div>
+            <p class="text-xs text-teal-soft italic text-center mb-4">
+              "Aku memohon ampun kepada Allah Yang Maha Agung dan aku bertaubat kepada-Nya."
+            </p>
+            <button onclick="incrementIstighfar()" class="w-full py-3 rounded-xl bg-amber hover:bg-amber-light text-ink font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition transform active:scale-95">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span>Ucapkan Istighfar Bersama Kelas (+1)</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 flex justify-between items-center pt-2 border-t border-slate-100 stagger-item delay-4">
+          <span>Pembiasaan Karakter Kurikulum Berbasis Cinta</span>
+          <span class="text-teal font-semibold">Slide berikutnya: Asesmen Formatif / Kuis Interaktif Pertemuan 1 →</span>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 10: KUIS INTERAKTIF ASESMEN FORMATIF PERTEMUAN 1
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="3. ASESMEN FORMATIF (KUIS INTERAKTIF)">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-teal text-white"><span>09</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-amber-dark">Evaluasi Pembelajaran Pertemuan 1</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Kuis Interaktif: Uji Pemahaman Materi Taubat</h2>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span id="quizScoreBadge" class="text-xs font-extrabold bg-amber-soft text-amber-dark px-3.5 py-1.5 rounded-full border border-amber/30">Skor: 0 / 100</span>
+            <button onclick="resetQuiz()" class="text-xs font-bold text-slate-500 hover:text-teal flex items-center gap-1">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Ulangi
+            </button>
+          </div>
+        </div>
+
+        <!-- Area Kuis -->
+        <div class="my-auto py-3 max-w-4xl mx-auto w-full stagger-item delay-2">
+          <div id="quizCard" class="bg-white rounded-3xl border-2 border-slate-200 p-6 sm:p-8 shadow-md">
+            <div class="flex items-center justify-between mb-4">
+              <span id="quizNumberText" class="text-xs font-extrabold uppercase tracking-wider text-teal bg-teal-soft px-3 py-1 rounded-full">Soal 1 dari 5</span>
+              <div class="flex gap-1.5" id="quizDots"></div>
+            </div>
+
+            <h3 id="quizQuestionText" class="text-base sm:text-lg font-extrabold text-ink leading-snug mb-5">
+              Memuat pertanyaan...
+            </h3>
+
+            <div id="quizOptionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <!-- Diisi via JS -->
+            </div>
+
+            <!-- Feedback Box -->
+            <div id="quizFeedbackBox" class="mt-5 p-4 rounded-2xl hidden items-start justify-between gap-4">
+              <div class="text-xs sm:text-sm font-medium leading-relaxed" id="quizFeedbackText"></div>
+              <button id="btnNextQuestion" onclick="nextQuizQuestion()" class="px-4 py-2 rounded-xl bg-ink text-white text-xs font-extrabold shrink-0 hover:bg-teal transition">
+                Soal Berikutnya →
+              </button>
+            </div>
+          </div>
+
+          <!-- Layar Hasil Akhir Kuis -->
+          <div id="quizResultCard" class="bg-gradient-to-br from-teal-dark to-teal text-white rounded-3xl p-8 text-center shadow-xl hidden">
+            <div class="w-16 h-16 rounded-2xl bg-amber text-ink flex items-center justify-center mx-auto mb-4 font-extrabold text-2xl shadow-lg">
+              🏆
+            </div>
+            <h3 class="text-2xl font-extrabold mb-1">Alhamdulillah, Kuis Pertemuan 1 Selesai!</h3>
+            <p id="quizFinalScoreText" class="text-amber-light font-extrabold text-lg mb-3">Skor Akhir Kelas: 100 / 100</p>
+            <p id="quizFinalMessage" class="text-xs sm:text-sm text-teal-soft max-w-lg mx-auto mb-6"></p>
+            <div class="flex justify-center gap-3">
+              <button onclick="resetQuiz()" class="px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-extrabold transition">
+                Mainkan Lagi
+              </button>
+              <button onclick="nextSlide()" class="px-5 py-2.5 rounded-xl bg-amber hover:bg-amber-light text-ink text-xs font-extrabold transition">
+                Lanjut ke Penutup & Refleksi →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 flex justify-between items-center pt-2 border-t border-slate-100 stagger-item delay-3">
+          <span>Instrumen Asesmen Formatif • Sesuai Indikator KKTP Modul Ajar</span>
+          <span class="text-teal font-semibold">Slide terakhir: Refleksi Cinta, Komitmen & Doa Penutup →</span>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 11: KEGIATAN PENUTUP (REFLEKSI, RANGKUMAN & TINDAK LANJUT)
+           ========================================== -->
+      <section class="slide-section p-6 sm:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto custom-scroll" data-phase="4. KEGIATAN PENUTUP (10 MENIT)">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3 stagger-item delay-1">
+          <div class="flex items-center gap-3">
+            <div class="diamond-badge bg-amber text-ink"><span>10</span></div>
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-teal">Tahap Penutup Pembelajaran</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-ink">Refleksi Diri, Komitmen Cinta & Doa Kafaratul Majelis</h2>
+            </div>
+          </div>
+          <span class="text-xs font-bold bg-teal-soft text-teal-dark px-3 py-1.5 rounded-full">10 Menit Terakhir</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto py-3">
+          <!-- Kiri: Kartu Komitmen Siswa -->
+          <div class="lg:col-span-6 bg-white rounded-3xl p-6 border-2 border-slate-200 shadow-sm space-y-4 stagger-item delay-2">
+            <h3 class="text-base font-extrabold text-ink flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-5 h-5 text-amber-dark"></i>
+              Pohon Komitmen Taubat & Cinta Hari Ini
+            </h3>
+            <p class="text-xs text-slate-600">Pilih target kebaikan nyata yang akan kita amalkan sepulang sekolah hari ini:</p>
+
+            <div class="space-y-2.5 text-xs sm:text-sm">
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-teal-soft/40 border border-slate-200 cursor-pointer transition">
+                <input type="checkbox" class="w-4 h-4 accent-teal rounded" checked>
+                <span class="font-medium text-ink">Membaca Istighfar minimal 33x setiap selesai salat fardhu.</span>
+              </label>
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-teal-soft/40 border border-slate-200 cursor-pointer transition">
+                <input type="checkbox" class="w-4 h-4 accent-teal rounded" checked>
+                <span class="font-medium text-ink">Meminta maaf kepada orang tua dan mencium tangan mereka saat tiba di rumah.</span>
+              </label>
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-teal-soft/40 border border-slate-200 cursor-pointer transition">
+                <input type="checkbox" class="w-4 h-4 accent-teal rounded" checked>
+                <span class="font-medium text-ink">Memaafkan teman yang pernah berbuat salah sebelum tidur malam ini.</span>
+              </label>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-amber-soft border border-amber/40 text-xs text-ink">
+              <strong>Informasi Pertemuan Ke-2 Pekan Depan:</strong> Kita akan melanjutkan pembahasan tentang <em>"Ketaatan (Taat) dan Kesinambungan Taubat dalam Kehidupan Sehari-hari"</em>.
+            </div>
+          </div>
+
+          <!-- Kanan: Doa Penutup Kafaratul Majelis Per-Kata Interaktif -->
+          <div class="lg:col-span-6 bg-gradient-to-br from-teal-dark via-teal to-teal-light rounded-3xl p-6 text-white shadow-xl flex flex-col justify-between stagger-item delay-3">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-amber-light">Doa Penutup Majelis (Klik Kata Arab)</span>
+                <span class="text-[11px] bg-white/15 px-2.5 py-0.5 rounded-full">HR. Tirmidzi</span>
+              </div>
+              <p class="text-xs text-teal-soft mb-3">Perhatikan bagaimana doa penutup majelis pun ditutup dengan kalimat Istighfar dan Taubat:</p>
+              <div id="doaPenutupContainer" class="flex flex-wrap justify-center gap-1.5 bg-white/95 text-ink p-4 rounded-2xl shadow-inner my-2" dir="rtl">
+                <!-- Diisi via JS -->
+              </div>
+              <p class="text-xs text-teal-soft italic leading-relaxed mt-3">
+                "Maha Suci Engkau ya Allah, dengan memuji-Mu aku bersaksi bahwa tiada Tuhan selain Engkau, <strong>aku memohon ampun dan bertaubat kepada-Mu</strong>."
+              </p>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-white/15 flex items-center justify-between">
+              <div>
+                <p class="text-xs font-extrabold text-amber-light">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+                <p class="text-[11px] text-teal-soft">Terima kasih atas semangat belajar penuh cinta hari ini!</p>
+              </div>
+              <button onclick="goToSlide(0)" class="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold flex items-center gap-1.5 transition">
+                <i data-lucide="home" class="w-4 h-4"></i> Ke Awal
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 flex justify-between items-center pt-2 border-t border-slate-100 stagger-item delay-4">
+          <span>Modul Ajar Akidah Akhlak Kelas VII • Pertemuan 1 Selesai</span>
+          <span class="text-teal font-semibold">Siap di-deploy ke Vercel & GitHub Repository</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- BOTTOM APPLE DYNAMIC ISLAND NAVIGATION DOCK -->
+  <footer class="h-16 px-4 flex items-center justify-center z-30 shrink-0">
+    <div class="apple-dock px-4 py-2 rounded-full flex items-center gap-3 sm:gap-5 text-white">
+      <button onclick="prevSlide()" id="btnPrev" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition active:scale-90 disabled:opacity-30">
+        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Indikator Titik Slide -->
+      <div id="slideDotsContainer" class="flex items-center gap-1.5"></div>
+
+      <span id="slideCounterText" class="text-xs font-extrabold tracking-wider text-amber-light min-w-[52px] text-center">1 / 11</span>
+
+      <button onclick="nextSlide()" id="btnNext" class="w-9 h-9 rounded-full bg-amber hover:bg-amber-light text-ink flex items-center justify-center transition active:scale-90 shadow">
+        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MODAL POP-UP ANALISIS PER-KATA ARAB (APPLE SHEET STYLE)
+       ========================================== -->
+  <div id="wordModalBackdrop" onclick="closeWordModal(event)" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-opacity">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border-2 border-amber transform transition-all scale-100 relative overflow-hidden" onclick="event.stopPropagation()">
+      <div class="absolute top-0 right-0 w-24 h-24 bg-teal/10 rounded-bl-full -z-0"></div>
+
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4 relative z-10">
+        <span class="px-3 py-1 rounded-full bg-teal-soft text-teal-dark text-xs font-extrabold uppercase tracking-wider">Kamus & Tadabbur Kata</span>
+        <button onclick="closeWordModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="text-center py-4 bg-gradient-to-b from-amber-soft/60 to-white rounded-2xl border border-amber/30 mb-4">
+        <p id="modalArabicWord" class="font-arabic text-4xl sm:text-5xl text-teal-dark leading-relaxed mb-2" dir="rtl"></p>
+        <p id="modalTransliteration" class="text-xs font-bold uppercase tracking-widest text-amber-dark"></p>
+      </div>
+
+      <div class="space-y-3 text-left">
+        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">Arti Kata (Mufradat):</span>
+          <p id="modalMeaning" class="text-base font-extrabold text-ink mt-0.5"></p>
+        </div>
+
+        <div class="bg-teal-soft/50 p-3.5 rounded-xl border border-teal/20">
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-teal block">Penjelasan & Tadabbur Kurikulum Cinta:</span>
+          <p id="modalExplanation" class="text-xs sm:text-sm text-slate-700 leading-relaxed mt-1"></p>
+        </div>
+      </div>
+
+      <button onclick="closeWordModal()" class="mt-5 w-full py-2.5 rounded-xl bg-teal hover:bg-teal-dark text-white font-extrabold text-xs transition">
+        Mengerti & Tutup Pop-up
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL IDENTITAS MODUL AJAR LENGKAP
+       ========================================== -->
+  <div id="modulModalBackdrop" onclick="closeModalInfoModul()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[85vh] overflow-y-auto custom-scroll" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-4 mb-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-amber-dark">Dokumen Kurikulum Berbasis Cinta</span>
+          <h3 class="text-lg sm:text-xl font-extrabold text-ink">Rincian Modul Ajar Pertemuan Ke-1</h3>
+        </div>
+        <button onclick="closeModalInfoModul()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs mb-4">
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="text-slate-400 font-bold block">Mata Pelajaran / Fase:</span>
+          <span class="font-extrabold text-ink">Akidah Akhlak / Kelas VII (Fase D)</span>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="text-slate-400 font-bold block">Topik Pertemuan 1:</span>
+          <span class="font-extrabold text-ink">Hakikat, Dalil, Syarat, dan Hikmah Taubat</span>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="text-slate-400 font-bold block">Pendekatan Pembelajaran:</span>
+          <span class="font-extrabold text-teal">Kurikulum Berbasis Cinta (Deep Learning)</span>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="text-slate-400 font-bold block">Alokasi Waktu:</span>
+          <span class="font-extrabold text-ink">2 JP x 40 Menit (1 Pertemuan Utuh)</span>
+        </div>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-600 leading-relaxed">
+        <div class="p-3.5 rounded-xl bg-teal-soft/50 border border-teal/20">
+          <strong class="text-teal-dark block mb-1">1. Kegiatan Pendahuluan (10 Menit)</strong>
+          Salam kasih sayang, doa sebelum belajar interaktif, presensi kehadiran & kondisi hati siswa, serta apersepsi perumpamaan pakaian bernoda yang dicuci bersih.
+        </div>
+        <div class="p-3.5 rounded-xl bg-amber-soft/60 border border-amber/30">
+          <strong class="text-amber-dark block mb-1">2. Kegiatan Inti (60 Menit)</strong>
+          Eksplorasi arti bahasa & istilah taubat, analisis per-kata QS. At-Tahrim: 8, QS. An-Nur: 31, dan QS. Az-Zumar: 53, klasifikasi syarat taubat (Haqqullah & Haqqul Adami), serta diskusi studi kasus LKPD.
+        </div>
+        <div class="p-3.5 rounded-xl bg-slate-100 border border-slate-200">
+          <strong class="text-ink block mb-1">3. Kegiatan Penutup & Asesmen (10 Menit)</strong>
+          Kuis interaktif 5 soal HOTS, refleksi komitmen harian, zikir istighfar bersama, informasi materi pertemuan ke-2, dan doa Kafaratul Majelis.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       JAVASCRIPT ENGINE: DATA KATA ARAB, KUIS & NAVIGASI
+       ========================================== -->
+  <script>
+    // 1. DATABASE KATA PER-KATA ARAB BESERTA PENJELASAN TADABBUR LENGKAP
+    const doaPembukaWords = [
+      { arab: "رَبِّ", latin: "Rabbi", arti: "Ya Tuhanku", ket: "Panggilan penuh cinta dan ketergantungan seorang hamba kepada Allah Sang Maha Pendidik (Ar-Rabb)." },
+      { arab: "زِدْنِي", latin: "Zidnī", arti: "Tambahkanlah kepadaku", ket: "Permohonan agar hati kita selalu diberi tambahan kebaikan dan tidak merasa cepat puas dalam belajar." },
+      { arab: "عِلْمًا", latin: "'Ilman", arti: "Ilmu pengetahuan", ket: "Ilmu yang bermanfaat adalah cahaya yang menuntun kita mengenali mana yang diridai Allah dan mana yang harus dijauhi." },
+      { arab: "وَارْزُقْنِي", latin: "Warzuqnī", arti: "Dan karuniakanlah aku", ket: "Meminta rezeki batin berupa kemudahan menyerap hikmah pelajaran." },
+      { arab: "فَهْمًا", latin: "Fahman", arti: "Kepahaman yang benar", ket: "Bukan sekadar hafal teori, tetapi paham hingga mampu mengamalkan taubat dalam kehidupan nyata." }
+    ];
+
+    const rootTaubatWords = [
+      { arab: "تَابَ", latin: "Tāba", arti: "Telah kembali (Fi'il Madhi)", ket: "Kata kerja bentuk lampau yang bermakna seseorang telah berbalik arah meninggalkan jalan kesalahan menuju jalan Allah." },
+      { arab: "يَتُوبُ", latin: "Yatūbu", arti: "Sedang/Akan kembali (Fi'il Mudhari')", ket: "Menunjukkan bahwa taubat adalah proses yang terus berlangsung setiap kali manusia menyadari kekhilafannya." },
+      { arab: "تَوْبَةً", latin: "Taubatan", arti: "Kembalinya hati / Taubat (Masdar)", ket: "Bermakna pulang ke rumah kasih sayang Allah SWT setelah tersesat oleh hawa nafsu." }
+    ];
+
+    const ayahTahrimWords = [
+      { arab: "يَا أَيُّهَا", latin: "Yā Ayyuhā", arti: "Wahai", ket: "Seruan lembut penuh perhatian dari Allah SWT kepada hamba-hamba yang dicintai-Nya." },
+      { arab: "الَّذِينَ", latin: "Alladzīna", arti: "Orang-orang yang", ket: "Kata sambung yang mengkhususkan sapaan kepada kelompok orang yang masih memiliki cahaya iman di hatinya." },
+      { arab: "آمَنُوا", latin: "Āmanū", arti: "Beriman", ket: "Orang yang beriman pun bisa berbuat salah, namun tanda imannya adalah ia mau segera bertaubat ketika diingatkan." },
+      { arab: "تُوبُوا", latin: "Tūbū", arti: "Bertaubatlah kalian!", ket: "Kata perintah (Fi'il Amar) yang menunjukkan kewajiban segera kembali kepada Allah tanpa menunda waktu." },
+      { arab: "إِلَى اللَّهِ", latin: "Ilallāhi", arti: "Kepada Allah", ket: "Tujuan kembali hanyalah kepada Allah semata, dengan ikhlas mengharap rida dan ampunan-Nya." },
+      { arab: "تَوْبَةً", latin: "Taubatan", arti: "Dengan taubat", ket: "Bentuk penegasan (Maf'ul Muthlaq) agar taubat dilakukan secara sungguh-sungguh, bukan sekadar di bibir." },
+      { arab: "نَصُوحًا", latin: "Nashūhā", arti: "Yang semurni-murninya", ket: "Taubat yang murni, jujur, bersih dari niat berpura-pura, dan memperbaiki robekan amal seperti menjahit kain yang koyak." },
+      { arab: "عَسَىٰ", latin: "'Asā", arti: "Mudah-mudahan / Pasti", ket: "Kata 'Asa dari Allah di dalam Al-Qur'an bermakna kepastian janji yang pasti ditepati oleh-Nya." },
+      { arab: "رَبُّكُمْ", latin: "Rabbukum", arti: "Tuhan Pemelihara kalian", ket: "Menggunakan kata 'Rabb' untuk mengingatkan bahwa Allah selalu membimbing dan menyayangi kita." },
+      { arab: "أَنْ يُكَفِّرَ", latin: "An Yukaffira", arti: "Akan menghapuskan / menutupi", ket: "Dari kata Kafara (menutup). Allah tidak hanya mengampuni, tetapi juga menutupi aib dosa tersebut agar kita tidak malu." },
+      { arab: "عَنْكُمْ", latin: "'Ankum", arti: "Dari diri kalian", ket: "Menghilangkan beban dosa yang selama ini memberatkan pundak dan hati kalian." },
+      { arab: "سَيِّئَاتِكُمْ", latin: "Sayyi'ātikum", arti: "Kesalahan-kesalahan kalian", ket: "Segala perbuatan buruk, baik yang kecil maupun besar, akan dihapus bersih oleh rahmat Allah SWT." }
+    ];
+
+    const ayahNurWords = [
+      { arab: "وَتُوبُوا", latin: "Wa tūbū", arti: "Dan bertaubatlah kalian", ket: "Perintah Allah agar kita senantiasa memperbarui taubat setiap waktu." },
+      { arab: "إِلَى اللَّهِ", latin: "Ilallāhi", arti: "Kepada Allah", ket: "Menjadikan Allah sebagai satu-satunya tempat mengadu dan memohon ampunan." },
+      { arab: "جَمِيعًا", latin: "Jamī'an", arti: "Semuanya / Bersama-sama", ket: "Seluruh orang beriman tanpa terkecuali wajib bertaubat dan saling mendukung dalam kebaikan." },
+      { arab: "أَيُّهَ", latin: "Ayyuha", arti: "Wahai", ket: "Sapaan kemuliaan bagi kaum mukminin." },
+      { arab: "الْمُؤْمِنُونَ", latin: "Al-Mu'minūna", arti: "Orang-orang yang beriman", ket: "Identitas mulia seorang muslim yang hatinya selalu terhubung dengan Allah." },
+      { arab: "لَعَلَّكُمْ", latin: "La'allakum", arti: "Supaya kalian", ket: "Menunjukkan tujuan kasih sayang di balik perintah taubat." },
+      { arab: "تُفْلِحُونَ", latin: "Tuflihūn", arti: "Beruntung / Bahagia", ket: "Orang yang bertaubat adalah pemenang sejati yang meraih kebahagiaan di dunia dan surga di akhirat." }
+    ];
+
+    const ayahZumarWords = [
+      { arab: "يَا عِبَادِيَ", latin: "Yā 'Ibādiya", arti: "Wahai hamba-hamba-Ku", ket: "Sapaan paling mesra di Al-Qur'an! Allah tetap mengakui pendosa sebagai 'Hamba-Ku' karena besarnya cinta Allah." },
+      { arab: "الَّذِينَ", latin: "Alladzīna", arti: "Orang-orang yang", ket: "Merujuk pada manusia yang pernah tergelincir dalam kesalahan." },
+      { arab: "أَسْرَفُوا", latin: "Asrafū", arti: "Melampaui batas", ket: "Meskipun seseorang merasa dosanya sudah terlalu banyak atau melampaui batas." },
+      { arab: "عَلَىٰ أَنْفُسِهِمْ", latin: "'Alā Anfusihim", arti: "Terhadap diri mereka sendiri", ket: "Setiap dosa sejatinya merugikan diri kita sendiri, bukan merugikan Allah SWT." },
+      { arab: "لَا تَقْنَطُوا", latin: "Lā Taqnathū", arti: "Janganlah kalian berputus asa!", ket: "Larangan tegas! Dalam Kurikulum Cinta, putus asa adalah hal yang dilarang karena rahmat Allah jauh lebih besar dari dosa kita." },
+      { arab: "مِنْ رَحْمَةِ اللَّهِ", latin: "Min Rahmatillāhi", arti: "Dari rahmat (kasih sayang) Allah", ket: "Pintu kasih sayang Allah terbuka 24 jam sebelum matahari terbit dari barat atau nyawa di kerongkongan." },
+      { arab: "إِنَّ اللَّهَ", latin: "Innallāha", arti: "Sesungguhnya Allah", ket: "Penegasan janji Allah yang Maha Benar." },
+      { arab: "يَغْفِرُ الذُّنُوبَ", latin: "Yaghfirudz-Dzunūba", arti: "Mengampuni dosa-dosa", ket: "Allah Maha Pengampun (Al-Ghafur) atas segala jenis dosa bagi hamba yang mau kembali." },
+      { arab: "جَمِيعًا", latin: "Jamī'an", arti: "Semuanya (tanpa terkecuali)", ket: "Tidak ada dosa yang terlalu besar untuk diampuni Allah selama hamba-Nya bertaubat dengan tulus." }
+    ];
+
+    const istighfarWords = [
+      { arab: "أَسْتَغْفِرُ", latin: "Astaghfiru", arti: "Aku memohon ampun", ket: "Ungkapan kerendahan hati seorang hamba yang meminta agar kesalahannya ditutupi dan diampuni." },
+      { arab: "اللَّهَ", latin: "Allāha", arti: "Kepada Allah", ket: "Tuhan Yang Maha Penerima Taubat." },
+      { arab: "الْعَظِيمَ", latin: "Al-'Azhīm", arti: "Yang Maha Agung", ket: "Keagungan Allah mampu menghapus dosa sebesar apa pun." },
+      { arab: "وَأَتُوبُ", latin: "Wa Atūbu", arti: "Dan aku bertaubat (kembali)", ket: "Menggabungkan permohonan ampun di lisan dengan tekad kembali taat di dalam hati." },
+      { arab: "إِلَيْهِ", latin: "Ilaihi", arti: "Kepada-Nya", ket: "Hanya kepada Allah tempat kita kembali." }
+    ];
+
+    const doaPenutupWords = [
+      { arab: "سُبْحَانَكَ", latin: "Subhānaka", arti: "Maha Suci Engkau", ket: "Mensucikan Allah dari segala kekurangan di akhir majelis ilmu." },
+      { arab: "اللَّهُمَّ", latin: "Allāhumma", arti: "Ya Allah", ket: "Seruan doa kepada Allah SWT." },
+      { arab: "وَبِحَمْدِكَ", latin: "Wa bihamdika", arti: "Dan dengan memuji-Mu", ket: "Bersyukur atas nikmat ilmu yang telah dipelajari hari ini." },
+      { arab: "أَشْهَدُ", latin: "Asyhadu", arti: "Aku bersaksi", ket: "Memperbarui syahadat dan keimanan di dalam hati." },
+      { arab: "أَنْ لَا إِلَٰهَ إِلَّا أَنْتَ", latin: "An lā ilāha illā Anta", arti: "Bahwa tiada Tuhan selain Engkau", ket: "Kalimat tauhid sebagai fondasi utama Akidah Islam." },
+      { arab: "أَسْتَغْفِرُكَ", latin: "Astaghfiruka", arti: "Aku memohon ampun kepada-Mu", ket: "Memohon ampun apabila selama belajar di kelas terdapat kekhilafan lisan atau sikap." },
+      { arab: "وَأَتُوبُ إِلَيْكَ", latin: "Wa atūbu ilaik", arti: "Dan aku bertaubat kepada-Mu", ket: "Menutup pertemuan dengan komitmen taubat kepada Allah SWT." }
+    ];
+
+    // Fungsi Render Kata Arab Interaktif ke Container
+    let exploredTahrimSet = new Set();
+
+    function renderArabicWords(containerId, wordsArray, trackTahrim = false) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+
+      wordsArray.forEach((item, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'arabic-word group';
+        btn.innerHTML = `
+          <span class="text-xl sm:text-2xl lg:text-3xl font-bold text-ink group-hover:text-teal-dark">${item.arab}</span>
+          <span class="text-[10px] font-sans font-semibold text-slate-400 group-hover:text-amber-dark">${item.latin}</span>
+        `;
+        btn.onclick = () => {
+          btn.classList.add('explored');
+          if (trackTahrim) {
+            exploredTahrimSet.add(idx);
+            const counterEl = document.getElementById('tahrimCounter');
+            if (counterEl) counterEl.textContent = `${exploredTahrimSet.size} / ${wordsArray.length} Kata Dieksplorasi`;
+          }
+          openWordModal(item);
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function openWordModal(item) {
+      document.getElementById('modalArabicWord').textContent = item.arab;
+      document.getElementById('modalTransliteration').textContent = item.latin;
+      document.getElementById('modalMeaning').textContent = item.arti;
+      document.getElementById('modalExplanation').textContent = item.ket;
+
+      const backdrop = document.getElementById('wordModalBackdrop');
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+    }
+
+    function closeWordModal() {
+      const backdrop = document.getElementById('wordModalBackdrop');
+      backdrop.classList.add('hidden');
+      backdrop.classList.remove('flex');
+    }
+
+    function showFullTafsirTahrim() {
+      openWordModal({
+        arab: "تَوْبَةً نَصُوحًا",
+        latin: "Intisari QS. At-Tahrim Ayat 8",
+        arti: "Perintah Taubat yang Semurni-murninya",
+        ket: "Sayyidina Umar bin Khattab dan Ubay bin Ka'ab menjelaskan bahwa Taubatan Nasuha adalah bertaubat dari dosa, kemudian tidak kembali lagi berbuat dosa tersebut sebagaimana air susu tidak akan kembali ke dalam kantung susu induknya."
+      });
+    }
+
+    // 2. LOGIKA SLIDE NAVIGATION & APPLE TRANSITIONS
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide-section');
+    const totalSlides = slides.length;
+
+    function initNavigationDots() {
+      const dotsContainer = document.getElementById('slideDotsContainer');
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `h-2 rounded-full transition-all duration-300 ${i === currentSlideIndex ? 'w-6 bg-amber' : 'w-2 bg-white/30 hover:bg-white/60'}`;
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateSlideUI() {
+      slides.forEach((slide, idx) => {
+        slide.classList.remove('active', 'prev');
+        if (idx === currentSlideIndex) {
+          slide.classList.add('active');
+        } else if (idx < currentSlideIndex) {
+          slide.classList.add('prev');
+        }
+      });
+
+      document.getElementById('slideCounterText').textContent = `${currentSlideIndex + 1} / ${totalSlides}`;
+      document.getElementById('btnPrev').disabled = currentSlideIndex === 0;
+
+      const currentPhase = slides[currentSlideIndex].getAttribute('data-phase') || 'PEMBELAJARAN';
+      document.getElementById('phaseBadge').textContent = currentPhase;
+
+      initNavigationDots();
+    }
+
+    function nextSlide() {
+      if (currentSlideIndex < totalSlides - 1) {
+        currentSlideIndex++;
+        updateSlideUI();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+        updateSlideUI();
+      }
+    }
+
+    function goToSlide(index) {
+      if (index >= 0 && index < totalSlides) {
+        currentSlideIndex = index;
+        updateSlideUI();
+      }
+    }
+
+    // Keyboard Navigation Support
+    window.addEventListener('keydown', (e) => {
+      if (!document.getElementById('wordModalBackdrop').classList.contains('hidden')) {
+        if (e.key === 'Escape') closeWordModal();
+        return;
+      }
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') nextSlide();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+    });
+
+    // 3. INTERAKSI SLIDE PENDAHULUAN, SYARAT & LKPD
+    function selectMood(moodTitle, responseText) {
+      const box = document.getElementById('moodResponseBox');
+      box.classList.remove('hidden');
+      box.innerHTML = `<strong>Respon Guru (${moodTitle}):</strong> ${responseText}`;
+    }
+
+    function updateReadinessProgress() {
+      // Visual feedback ringan saat guru mencentang aktivitas pembukaan
+    }
+
+    function switchSyaratTab(type) {
+      const btnHaq = document.getElementById('btnTabHaqqullah');
+      const btnAda = document.getElementById('btnTabAdami');
+      const card4 = document.getElementById('cardSyarat4');
+      const detailText = document.getElementById('syaratDetailText');
+
+      if (type === 'haqqullah') {
+        btnHaq.className = 'px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-teal text-white shadow transition';
+        btnAda.className = 'px-3.5 py-1.5 rounded-lg text-xs font-extrabold text-slate-600 hover:text-ink transition';
+        card4.classList.add('opacity-50', 'scale-95');
+        detailText.innerHTML = `<strong>Fokus Haqqullah (Dosa kepada Allah):</strong> Seperti meninggalkan salat atau puasa. Cukup penuhi <strong>3 syarat utama</strong> (Berhenti, Menyesal, Bertekad tidak mengulangi) disertai mengqadha ibadah yang ditinggalkan.`;
+      } else {
+        btnAda.className = 'px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-amber text-ink shadow transition';
+        btnHaq.className = 'px-3.5 py-1.5 rounded-lg text-xs font-extrabold text-slate-600 hover:text-ink transition';
+        card4.classList.remove('opacity-50', 'scale-95');
+        card4.classList.add('ring-4', 'ring-amber/40');
+        detailText.innerHTML = `<strong>Fokus Haqqul Adami (Dosa kepada Sesama Manusia):</strong> Allah tidak akan mengampuni dosa kezaliman antar manusia sebelum <strong>Syarat ke-4 terpenuhi</strong>, yaitu meminta maaf langsung atau mengembalikan hak orang yang disakiti.`;
+      }
+    }
+
+    // Data Studi Kasus LKPD Slide 8
+    const caseStudies = [
+      {
+        category: "Kategori: Haqqul Adami (Hak Sesama Manusia)",
+        title: "Kasus 1: Komentar Mengejek di Grup WA Kelas",
+        scenario: "Raka sudah membaca kalimat 'Astaghfirullah' di kamarnya malam hari karena merasa bersalah telah mengejek foto Dimas di grup WA. Menurut kalian, apakah taubat Raka sudah sah dan selesai?",
+        solution: "<strong>Belum Sempurna!</strong> Karena mengejek teman termasuk dosa <em>Haqqul Adami</em>. Selain beristighfar kepada Allah (3 syarat), Raka wajib memenuhi <strong>Syarat ke-4</strong>: menghapus pesan ejekan tersebut, menemui Dimas untuk meminta maaf dengan tulus, dan memulihkan nama baik Dimas di grup kelas."
+      },
+      {
+        category: "Kategori: Haqqullah (Hak Allah SWT)",
+        title: "Kasus 2: Menunda Salat Ashar Karena Game Online",
+        scenario: "Nabila terlalu asyik bermain game bersama temannya hingga waktu Ashar hampir habis dan ia baru salat dengan sangat terburu-buru. Bagaimana langkah taubat Nabila?",
+        solution: "<strong>Termasuk Dosa Haqqullah.</strong> Langkah taubat Nabila: (1) <em>Al-Iqla'</em>: Menghentikan kebiasaan mengutamakan game di atas waktu salat, (2) <em>An-Nadm</em>: Menyesal di dalam hati karena telah mengabaikan panggilan kasih sayang Allah, dan (3) <em>Al-'Azm</em>: Memasang alarm pengingat waktu salat agar selalu salat tepat waktu."
+      },
+      {
+        category: "Kategori: Haqqul Adami (Harta / Muamalah)",
+        title: "Kasus 3: Memakai Uang Kembalian Kantin Sekolah",
+        scenario: "Fajar menyadari Ibu Kantin kelebihan memberi uang kembalian sebesar Rp10.000, namun Fajar terlanjur membelanjakannya. Apa yang harus dilakukan Fajar agar taubatnya diterima?",
+        solution: "<strong>Wajib Mengembalikan Hak Harta!</strong> Taubat dari mengambil hak harta orang lain tidak cukup hanya dengan berdoa. Fajar harus menyesali perbuatannya kepada Allah, lalu menyisihkan uang jajannya sebesar Rp10.000 untuk dikembalikan kepada Ibu Kantin sembari meminta maaf dengan jujur."
+      }
+    ];
+
+    function selectCaseStudy(index) {
+      [0, 1, 2].forEach(i => {
+        const btn = document.getElementById(`caseBtn${i}`);
+        if (i === index) {
+          btn.className = "w-full text-left p-4 rounded-2xl border-2 border-teal bg-teal-soft/50 transition flex items-start gap-3";
+        } else {
+          btn.className = "w-full text-left p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-teal/50 transition flex items-start gap-3";
+        }
+      });
+
+      const data = caseStudies[index];
+      document.getElementById('caseCategoryBadge').textContent = data.category;
+      document.getElementById('caseTitle').textContent = data.title;
+      document.getElementById('caseScenario').textContent = data.scenario;
+      document.getElementById('caseSolutionText').innerHTML = data.solution;
+      document.getElementById('caseSolutionBox').classList.add('hidden');
+    }
+
+    function toggleCaseSolution() {
+      const box = document.getElementById('caseSolutionBox');
+      box.classList.toggle('hidden');
+    }
+
+    // Counter Istighfar Slide 9
+    let istighfarCounter = 0;
+    function incrementIstighfar() {
+      istighfarCounter++;
+      const badge = document.getElementById('tasbihCountBadge');
+      badge.textContent = `${istighfarCounter}x Dibaca`;
+      badge.classList.add('scale-110', 'bg-amber', 'text-ink');
+      setTimeout(() => {
+        badge.classList.remove('scale-110');
+      }, 250);
+    }
+
+    // 4. ENGINE KUIS INTERAKTIF PERTEMUAN 1 (5 SOAL HOTS)
+    const quizData = [
+      {
+        question: "Secara bahasa (etimologi), kata 'At-Taubah' berasal dari bahasa Arab 'Tāba - Yatūbu' yang memiliki arti...",
+        options: [
+          "Menahan diri dari amarah",
+          "Kembali atau pulang ke jalan yang benar",
+          "Menyerahkan segala urusan",
+          "Takut kepada siksa neraka"
+        ],
+        correct: 1,
+        explanation: "Benar! Secara bahasa Taubat berarti Ar-Ruju' (Kembali), yaitu kembali dari kemaksiatan menuju ketaatan dan kasih sayang Allah SWT."
+      },
+      {
+        question: "Dalam QS. At-Tahrim ayat 8, Allah memerintahkan orang beriman untuk melakukan 'Taubatan Nasuha'. Apakah makna dari kata 'Nasuha'?",
+        options: [
+          "Taubat yang dilakukan bersama-sama di masjid",
+          "Taubat yang semurni-murninya, tulus, dan jujur tanpa kepalsuan",
+          "Taubat yang dilakukan hanya ketika bulan Ramadan",
+          "Taubat karena takut dimarahi oleh orang tua"
+        ],
+        correct: 1,
+        explanation: "Tepat sekali! Taubatan Nasuha artinya taubat yang murni (seperti madu murni tanpa campuran) dan menambal kembali robekan amal dengan tulus."
+      },
+      {
+        question: "Perhatikan potongan ayat berikut: (لَا تَقْنَطُوا مِنْ رَحْمَةِ اللَّهِ) dalam QS. Az-Zumar ayat 53. Pesan utama Kurikulum Cinta dari potongan ayat tersebut adalah...",
+        options: [
+          "Larangan berputus asa dari rahmat dan ampunan Allah SWT",
+          "Perintah untuk menjauhi teman yang pernah berbuat salah",
+          "Kewajiban menghafal seluruh nama-nama surat Al-Qur'an",
+          "Peringatan bahwa dosa besar tidak mungkin diampuni"
+        ],
+        correct: 0,
+        explanation: "Luar biasa! 'Lā taqnathū min rahmatillāh' artinya: Janganlah kamu berputus asa dari rahmat Allah. Allah mengampuni seluruh dosa bagi yang mau bertaubat."
+      },
+      {
+        question: "Apabila seseorang melakukan kesalahan yang merugikan temannya (Haqqul Adami), maka selain memenuhi 3 syarat taubat kepada Allah, ia wajib...",
+        options: [
+          "Pindah ke sekolah lain agar tidak bertemu temannya",
+          "Berpuasa selama tiga hari berturut-turut",
+          "Meminta maaf secara langsung dan mengembalikan hak temannya",
+          "Cukup mendoakannya di dalam hati tanpa perlu meminta maaf"
+        ],
+        correct: 2,
+        explanation: "Sangat tepat! Urusan Haqqul Adami (hak sesama manusia) baru selesai apabila kita telah meminta maaf/kerelaan dan mengembalikan hak yang terambil."
+      },
+      {
+        question: "Rasulullah SAW bersabda: 'An-Nadamu Taubah' (HR. Ibnu Majah). Berdasarkan hadis tersebut, apakah rukun paling utama di dalam hati orang yang bertaubat?",
+        options: [
+          "Rasa bangga karena sudah banyak beramal",
+          "Penyesalan yang tulus di dalam hati atas kesalahan yang diperbuat",
+          "Keinginan agar dipuji sebagai anak yang saleh",
+          "Mengumumkan kesalahannya di media sosial"
+        ],
+        correct: 1,
+        explanation: "Benar! 'An-Nadm' (penyesalan yang tulus di dalam hati) adalah fondasi utama yang menggerakkan seseorang berhenti dari dosa."
+      }
+    ];
+
+    let currentQuizIdx = 0;
+    let quizScore = 0;
+    let quizAnswered = false;
+
+    function renderQuizQuestion() {
+      const q = quizData[currentQuizIdx];
+      quizAnswered = false;
+
+      document.getElementById('quizCard').classList.remove('hidden');
+      document.getElementById('quizResultCard').classList.add('hidden');
+      document.getElementById('quizFeedbackBox').classList.add('hidden');
+      document.getElementById('quizFeedbackBox').classList.remove('flex');
+
+      document.getElementById('quizNumberText').textContent = `Soal ${currentQuizIdx + 1} dari ${quizData.length}`;
+      document.getElementById('quizQuestionText').textContent = q.question;
+
+      // Render dots
+      const dotsEl = document.getElementById('quizDots');
+      dotsEl.innerHTML = '';
+      quizData.forEach((_, idx) => {
+        const d = document.createElement('span');
+        d.className = `w-2.5 h-2.5 rounded-full ${idx === currentQuizIdx ? 'bg-teal scale-125' : idx < currentQuizIdx ? 'bg-amber' : 'bg-slate-200'}`;
+        dotsEl.appendChild(d);
+      });
+
+      const optionsContainer = document.getElementById('quizOptionsContainer');
+      optionsContainer.innerHTML = '';
+
+      const letters = ['A', 'B', 'C', 'D'];
+      q.options.forEach((optText, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'p-4 rounded-2xl border-2 border-slate-200 hover:border-teal bg-slate-50/70 hover:bg-teal-soft/30 text-left flex items-start gap-3 transition group';
+        btn.innerHTML = `
+          <span class="w-7 h-7 rounded-lg bg-white border border-slate-300 group-hover:border-teal group-hover:bg-teal group-hover:text-white font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5 transition">${letters[idx]}</span>
+          <span class="text-xs sm:text-sm font-semibold text-ink">${optText}</span>
+        `;
+        btn.onclick = () => checkQuizAnswer(idx, btn);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkQuizAnswer(selectedIdx, clickedBtn) {
+      if (quizAnswered) return;
+      quizAnswered = true;
+
+      const q = quizData[currentQuizIdx];
+      const allBtns = document.getElementById('quizOptionsContainer').querySelectorAll('button');
+      const feedbackBox = document.getElementById('quizFeedbackBox');
+      const feedbackText = document.getElementById('quizFeedbackText');
+
+      allBtns.forEach((btn, idx) => {
+        btn.disabled = true;
+        if (idx === q.correct) {
+          btn.className = 'p-4 rounded-2xl border-2 border-emerald-600 bg-emerald-50 text-left flex items-start gap-3';
+        } else if (idx === selectedIdx) {
+          btn.className = 'p-4 rounded-2xl border-2 border-rose-500 bg-rose-50 text-left flex items-start gap-3';
+        }
+      });
+
+      if (selectedIdx === q.correct) {
+        quizScore += 20;
+        document.getElementById('quizScoreBadge').textContent = `Skor: ${quizScore} / 100`;
+        feedbackBox.className = 'mt-5 p-4 rounded-2xl flex items-center justify-between gap-4 bg-emerald-50 border border-emerald-300 text-emerald-950';
+        feedbackText.innerHTML = `✅ <strong> Masya Allah, Tepat!</strong> ${q.explanation}`;
+      } else {
+        feedbackBox.className = 'mt-5 p-4 rounded-2xl flex items-center justify-between gap-4 bg-amber-soft border border-amber text-ink';
+        feedbackText.innerHTML = `💡 <strong>Mari Kita Pahami Bersama:</strong> ${q.explanation}`;
+      }
+
+      document.getElementById('btnNextQuestion').textContent =
+        currentQuizIdx === quizData.length - 1 ? 'Lihat Hasil Akhir →' : 'Soal Berikutnya →';
+    }
+
+    function nextQuizQuestion() {
+      if (currentQuizIdx < quizData.length - 1) {
+        currentQuizIdx++;
+        renderQuizQuestion();
+      } else {
+        showQuizFinalResult();
+      }
+    }
+
+    function showQuizFinalResult() {
+      document.getElementById('quizCard').classList.add('hidden');
+      const resultCard = document.getElementById('quizResultCard');
+      resultCard.classList.remove('hidden');
+
+      document.getElementById('quizFinalScoreText').textContent = `Skor Akhir Kelas: ${quizScore} / 100`;
+      const msgEl = document.getElementById('quizFinalMessage');
+      if (quizScore >= 80) {
+        msgEl.textContent = "Masya Allah Tabarakallah! Pemahaman kelas terhadap hakikat, dalil, dan syarat Taubat dalam Kurikulum Berbasis Cinta sangat luar biasa. Mari kita amalkan dalam kehidupan sehari-hari!";
+      } else {
+        msgEl.textContent = "Semangat belajar yang hebat! Jangan ragu untuk mengulas kembali slide dalil dan syarat taubat agar pemahaman kita semakin mantap.";
+      }
+    }
+
+    function resetQuiz() {
+      currentQuizIdx = 0;
+      quizScore = 0;
+      document.getElementById('quizScoreBadge').textContent = 'Skor: 0 / 100';
+      renderQuizQuestion();
+    }
+
+    // Modal Info Modul & Fullscreen
+    function openModalInfoModul() {
+      const m = document.getElementById('modulModalBackdrop');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+    function closeModalInfoModul() {
+      const m = document.getElementById('modulModalBackdrop');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    // INISIALISASI SAAT HALAMAN DIMUAT
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderArabicWords('doaWordsContainer', doaPembukaWords);
+      renderArabicWords('rootWordsContainer', rootTaubatWords);
+      renderArabicWords('ayahTahrimContainer', ayahTahrimWords, true);
+      renderArabicWords('ayahNurContainer', ayahNurWords);
+      renderArabicWords('ayahZumarContainer', ayahZumarWords);
+      renderArabicWords('istighfarWordsContainer', istighfarWords);
+      renderArabicWords('doaPenutupContainer', doaPenutupWords);
+      selectCaseStudy(0);
+      renderQuizQuestion();
+      updateSlideUI();
+    });
+  </script>
+</body>
+</html>
